@@ -1,0 +1,35 @@
+<head>
+<meta charset="UTF-8">
+<title>License key generator</title>
+</head>Get license key:</head>
+
+<form action="" method="POST">
+{% csrf_token %}
+{{ form.as_p }}
+<input type="Submit" name="submit" value="Submit"/>
+</form>
+
+{% if submitbutton == "Submit" %}
+<body>
+  </h3>Your key: {{user_key}}</h3>
+</body>
+{%endif%}
+
+{% block content %}
+ <div class="features">
+   <h1>Licenses</h1>
+    {% for el in dbKeys %}
+    <div class="alert alert-warning">
+     <h2>------------------</h2>
+     <h3>User login</h3>
+     <p>{{ el.login }}</p>
+     <h3>User PC ID</h3>
+     <p>{{ el.uid }}</p>
+     <h3>License key</h3>
+     <p>{{ el.key }}</p>
+     <h3>Activation code</h3>
+     <p>{{ el.code }}</p>
+    </div>
+    {% endfor %}
+ </div>
+{% endblock %}

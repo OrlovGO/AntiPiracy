@@ -1,0 +1,50 @@
+{% load static %}
+<meta charset="UTF-8">
+
+<title>Activation code generator</title>
+<h2>Get your ID:</h2>
+<div id = "error_div" class = "d-none"></div>
+<button class="form_button" onclick="handle_submit_click()">Get ID</button>
+
+<h2>Enter your ID and key:</h2>
+
+<form action="" method="POST">
+{% csrf_token %}
+{{ form.as_p }}
+<input type="Submit" name="submit" value="Submit"/>
+</form>
+
+{% if submitbutton == "Submit" %}
+{% if key_incorrect == 0 %}
+ <h2>Your ID:</h2>
+ </h3>{{userid}}</h3>
+<h2>Your activation code:</h2>
+ </h3>{{activation_code}}</h3>
+{% else %}
+ <h2>Wrong key!</h2>
+{% endif %}
+{% endif %}
+
+{% block content %}
+   <div class="features">
+   <h1>Licenses</h1>
+    {% for el in dbKeys %}
+    <div class="alert alert-warning">
+     <h2>------------------</h2>
+     <h3>User login</h3>
+     <p>{{ el.login }}</p>
+     <h3>User PC ID</h3>
+     <p>{{ el.uid }}</p>
+     <h3>License key</h3>
+     <p>{{ el.key }}</p>
+     <h3>Activation code</h3>
+     <p>{{ el.code }}</p>
+    </div>
+    {% endfor %}
+ </div>
+{% endblock %}
+
+{% block js_block %}
+    <script type="text/javascript" src="{% static 'key/js/get_id.js' %}"></script>
+{% endblock %}
+

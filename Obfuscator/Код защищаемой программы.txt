@@ -1,0 +1,47 @@
+#include <iostream>
+#include <string>
+#include <fstream>
+#include <cstdlib>
+#include <time.h>
+
+using namespace std;
+
+int main(){
+    srand(time(0));
+    string str;
+    string license;
+    ifstream key("keys.txt");
+    ofstream key2("keys_new.txt");
+    bool flag = 0;
+    cout << "Enter your license key, please:" << endl;
+    cin >> license;
+
+while
+(getline(key, str)){
+        if(str == license)
+        {
+            flag = 1;
+            str = "NULL";
+        }
+
+    key2 << str << endl;
+};
+    key.close();
+
+if
+(flag == 1)
+    cout << "Access granted!" << endl;
+    else
+    {cout << "Access denied!" << endl;
+    exit(0);
+};
+    int n = 0;
+    cout << "Welcome! Enter n, please!" << endl;
+    cin >> n;
+for
+(int i = 0; i < n; i++)
+    {
+        cout << rand()%100 << endl;
+};
+return 0;
+}

@@ -1,0 +1,21 @@
+<head>
+<meta charset="UTF-8">
+<title>C++ Obfuscator</title>
+</head>Enter some C++ code to obfuscate:</head>
+<body></body>
+<form action="" method="POST">
+{% csrf_token %}
+{{ form.as_p }}
+<input type="Submit" name="submit" value="Submit"/>
+</form>
+
+{% if submitbutton == "Submit" %}
+ <h2>Obfuscated code:</h2>
+{% if flag_main == 0 %}
+<h3>Отсутствует функция main() в коде!</h3>
+{% else %}
+ </h3>{%for i in code%}
+  {{i|linebreaks}}
+{%endfor%}</h3>
+{% endif %}
+{% endif %}
